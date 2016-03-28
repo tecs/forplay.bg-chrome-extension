@@ -1,0 +1,10 @@
+.button_submit.vbox7 {
+    float: left;
+    background: #ED0F64;
+    border: 1px solid #F4486D;
+}
+
+.button_submit.vbox7:hover {
+    background: #F4486D;
+}
+

@@ -5,6 +5,7 @@
    },
    "content_scripts": [ {
       "js": [ "lib/jquery-2.1.1.min.js", "src/forplay.js" ],
+      "css": [ "src/forplay.css" ],
       "matches": [ "http://forplay.bg/forums*", "http://*.forplay.bg/forums*" ]
    } ],
    "description": "Tweaks, little tweaks... tweaks that are ever so small...",
@@ -13,6 +14,6 @@
    },
    "manifest_version": 2,
    "name": "Forplay.bg",
-   "permissions": [  ],
-   "version": "1.1"
+   "permissions": [ "http://*.vbox7.com/*", "http://vbox7.com/*" ],
+   "version": "1.2"
 }
