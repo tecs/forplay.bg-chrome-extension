@@ -40,8 +40,9 @@ function rand(arr)
 			}
 		});
 
-        // Let's add comment "generation" from Vbox7.com
-        $('.button_submit').parent().prepend($('<input type="submit" value="Вмъкни VBOX7 коментар" onclick="return false;" class="button_submit vbox7">').click(function() {
+        // Let's add comment "generation" from vbox7.com
+        $('.button_submit').parent().prepend($('<input type="submit" value="VBOX7" onclick="return false;" class="button_submit vbox7">').click(function() {
+            var $self = $(this).attr('disabled', true);
             $.get('http://vbox7.com/ajax/home/popular.php', function(data) {
                 var mdkey = rand(data.items).mdkey;
                 $.get('http://vbox7.com/ajax/nginx/aj_comment_get_json_v1.php', {mdkey: mdkey}, function(data) {
@@ -52,7 +53,28 @@ function rand(arr)
                     }
                     var comment = rand(data).d.comment;
                     replaceText(comment, $('textarea[name=message]')[0]);
+                    $self.attr('disabled', false);
                 }, 'json');
+            });
+        }));
+
+        // Let's add comment "generation" from pcmania.bg
+        $('.button_submit').parent().prepend($('<input type="submit" value="PC Mania" onclick="return false;" class="button_submit pcmania">').click(function() {
+            var $self = $(this).attr('disabled', true);
+            $.get('http://pcmania.bg/?go=news&p=list', function(data) {
+                var url = rand($(data).find('table.mainTable').eq(1).find('a')).getAttribute('href');
+                $.get('http://pcmania.bg' + url, function(data) {
+                    var comments = $(data).find('.commentTableRe td.content[valign=top], .commentTable td.content[valign=top]');
+                    if (!comments.length) {
+                        $('.button_submit.pcmania').click();
+                        return;
+                    }
+                    var comment = rand(comments);
+                    $(comment).find('span').remove();
+                    comment = $(comment).text().split('ч. :')[1].trim();
+                    replaceText(comment, $('textarea[name=message]')[0]);
+                    $self.attr('disabled', false);
+                });
             });
         }));
     });

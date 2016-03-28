@@ -2,9 +2,37 @@
     float: left;
     background: #ED0F64;
     border: 1px solid #F4486D;
+    margin-left: 10px;
 }
 
 .button_submit.vbox7:hover {
     background: #F4486D;
 }
 
+.button_submit.pcmania {
+    float: left;
+    background: #CB1B26;
+    border: 1px solid #EF3B46;
+}
+
+.button_submit.pcmania:hover {
+    background: #EF3B46;
+}
+
+.button_submit[disabled] {
+    animation: colorchange 2s alternate infinite;
+    -webkit-animation: colorchange 2s alternate infinite;
+    border: 1px solid #666666;
+}
+
+@keyframes colorchange {
+    0%   {background: #999999;}
+    50%  {background: #AAAAAA;}
+    100% {background: #999999;}
+}
+
+@-webkit-keyframes colorchange {
+    0%   {background: #999999;}
+    50%  {background: #AAAAAA;}
+    100% {background: #999999;}
+}
