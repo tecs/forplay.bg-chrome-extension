@@ -1,6 +1,5 @@
-chrome.runtime.onMessage.addListener(function(request, sender) 
-{
-	switch(request.action) {
+chrome.runtime.onMessage.addListener((request, sender) => {
+	switch (request.action) {
 		case '':
 		default:
 	}
