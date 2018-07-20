@@ -4,9 +4,10 @@
       "scripts": [ "src/background.js" ]
    },
    "content_scripts": [ {
-      "js": [ "lib/jquery-2.1.1.min.js", "src/forplay.js" ],
+      "js": [ "src/inject.js", "lib/jquery-2.1.1.min.js", "src/forplay.js" ],
       "css": [ "src/forplay.css" ],
-      "matches": [ "*://forplay.bg/forums*", "*://*.forplay.bg/forums*" ]
+      "matches": [ "*://forplay.bg/forums*", "*://*.forplay.bg/forums*" ],
+      "run_at": "document_start"
    } ],
    "description": "Tweaks, little tweaks... tweaks that are ever so small...",
    "icons": {
