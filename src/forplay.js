@@ -22,7 +22,7 @@ const rand = arr => arr[Math.round( Math.random() * (arr.length - 1) )];
     //Run on jQuery ready
     $(document).ready(() => {
         // First of all, let's make that logo useful
-        $('#logo a').attr('href', 'http://forplay.bg/forums/index.php');
+        $('#logo a').attr('href', '//www.forplay.bg/forums/index.php');
 
         // As for links...
         $('.post .inner a').each(function () {
