@@ -45,12 +45,12 @@ const rand = arr => arr[Math.round( Math.random() * (arr.length - 1) )];
                 const $self = $(this).attr('disabled', true);
                 $.get('//vbox7.com/ajax/home/popular.php', data => {
                     const { mdkey } = rand(data.items);
-                    $.get('//vbox7.com/ajax/nginx/aj_comment_get_json_v1.php', { mdkey }, data => {
-                        if (!data.length) {
+                    $.get('//vbox7.com/ajax/comment/fetch.php', { mdkey }, data => {
+                        if (!data.items.length) {
                             return $('.button_submit.vbox7').click();
                         }
-                        const { comment } = rand(data).d.comment;
-                        replaceText(comment, $('textarea[name=message]')[0]);
+                        const { body } = rand(data.items);
+                        replaceText(body, $('textarea[name=message]')[0]);
                         $self.attr('disabled', false);
                     }, 'json');
                 });
